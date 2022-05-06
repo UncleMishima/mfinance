@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+
+    <changeSet id="000_initial_schema" author="mishima">
+        <createSequence sequenceName="expense_sequence"
+                        startValue="1"
+                        incrementBy="1"
+        />
+
+        <createTable tableName="expense">
+            <column name="exp_id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="exp_amount" type="java.math.BigDecimal">
+                <constraints nullable="false"/>
+            </column>
+            <column name="exp_comment" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="exp_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+
+</databaseChangeLog>
