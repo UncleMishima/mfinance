@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expenses</title>
+</head>
+<body>
+
+<div th:switch="${expenses}">
+    <h2 th:case="null">No expenses yet!</h2>
+    <div th:case="*">
+        <h2>Expenses</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Amount</th>
+                <th>Comment</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="expense : ${expenses}">
+                <td th:text="${expense.id}"></td>
+                <td th:text="${expense.amount}"></td>
+                <td th:text="${expense.comment}"></td>
+                <td th:text="${expense.date}"></td>
+<!--                <td><a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></td>-->
+<!--                <td><a th:href="@{/delete/{id}(id=${user.id})}">Delete</a></td>-->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+<!--    <p><a href="/signup">Add a new user</a></p>-->
+</div>
+</body>
+</html>
