@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DefaultExpenseService implements ExpenseService {
@@ -21,5 +22,11 @@ public class DefaultExpenseService implements ExpenseService {
     @Override
     public List<ExpenseDTO> findAll() {
         return expenseMapper.toDto(expenseRepository.findAll());
+    }
+
+    @Override
+    public Optional<ExpenseDTO> findById(Long id) {
+        return expenseRepository.findById(id)
+                .map(expenseMapper::toDto);
     }
 }
