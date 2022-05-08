@@ -4,9 +4,12 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.SequenceGenerator;
 import java.math.BigDecimal;
@@ -31,6 +34,10 @@ public class Expense {
     @Column(name = "exp_date", nullable = false)
     @CreatedDate
     private Instant date;
+
+    @JoinColumn(name = "exp_category_code", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Category category;
 
     public Long getId() {
         return id;
@@ -62,5 +69,13 @@ public class Expense {
 
     public void setDate(Instant date) {
         this.date = date;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

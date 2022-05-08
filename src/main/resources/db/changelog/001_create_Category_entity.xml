@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+
+    <changeSet id="001_create_Category_entity" author="mishima">
+        <createTable tableName="category">
+            <column name="cat_code" type="varchar(128)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="cat_name" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addColumn tableName="expense">
+            <column name="exp_category_code" type="varchar(128)"/>
+        </addColumn>
+
+        <addForeignKeyConstraint baseTableName="expense"
+                                 baseColumnNames="exp_category_code"
+                                 constraintName="fk_expense_category"
+                                 referencedTableName="category"
+                                 referencedColumnNames="cat_code"
+        />
+    </changeSet>
+
+</databaseChangeLog>
