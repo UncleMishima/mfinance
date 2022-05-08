@@ -11,5 +11,6 @@
     <property name="uuidType" value="uuid" dbms="h2, postgresql"/>
 
     <include file="db/changelog/000_initial_schema.xml"/>
+    <include file="db/changelog/001_create_Category_entity.xml"/>
 
 </databaseChangeLog>

@@ -2,7 +2,6 @@ package com.mishima.mfinance.service.dto;
 
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.time.LocalDateTime;
 
 public class ExpenseDTO {
 
@@ -13,6 +12,8 @@ public class ExpenseDTO {
     private String comment;
 
     private Instant date;
+
+    private String categoryName;
 
     public Long getId() {
         return id;
@@ -44,5 +45,13 @@ public class ExpenseDTO {
 
     public void setDate(Instant date) {
         this.date = date;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 }
