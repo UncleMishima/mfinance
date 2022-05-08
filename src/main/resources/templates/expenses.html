@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Expenses</title>
+    <title>Expenses table</title>
+    <link href="/styles/expenses.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 
 <div th:switch="${expenses}">
-    <h2 th:case="null">No expenses yet!</h2>
+    <h1 th:case="null">No expenses yet!</h1>
     <div th:case="*">
-        <h2>Expenses</h2>
+        <h1>Expenses</h1>
         <table>
             <thead>
             <tr>
@@ -31,7 +32,11 @@
             </tbody>
         </table>
     </div>
-<!--    <p><a href="/signup">Add a new user</a></p>-->
 </div>
+
+<form action="#" th:action="@{/exepnse/{id}(id=${1})}" th:object="${expense}" method="get">
+
+</form>
+
 </body>
 </html>
