@@ -1,4 +1,4 @@
-package com.mishima.mfinance.web.rest;
+package com.mishima.mfinance.web;
 
 import com.mishima.mfinance.service.ExpenseService;
 import com.mishima.mfinance.service.dto.ExpenseDTO;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/expense")
-public class ExpenseController {
+@RequestMapping("/expenses")
+public class ExpensesController {
 
     @Autowired
     private ExpenseService expenseService;
@@ -20,7 +20,7 @@ public class ExpenseController {
     @GetMapping
     public String findAll(Model model) {
         model.addAttribute("expenses", expenseService.findAll());
-        return "expenses";
+        return "expenses/expensesTable";
     }
 
     @GetMapping("/{id}")
